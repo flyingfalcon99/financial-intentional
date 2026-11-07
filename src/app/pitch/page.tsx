@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 interface SlideItem {
   id: string;
+  tabLabel: string;
   badge: string;
   title: string;
   subtitle: string;
@@ -13,6 +14,7 @@ interface SlideItem {
 const SLIDES: SlideItem[] = [
   {
     id: 'vision',
+    tabLabel: '1. Vision',
     badge: 'Slide 01 • Executive Summary & Vision',
     title: 'Transforming FinancialIntentional.com into a High-Converting Personal Brand Hub',
     subtitle:
@@ -20,6 +22,7 @@ const SLIDES: SlideItem[] = [
   },
   {
     id: 'scope',
+    tabLabel: '2. Prototype Scope',
     badge: 'Slide 02 • Live Prototype Scope',
     title: 'What Is Live Today at financial-intentional.vercel.app',
     subtitle:
@@ -27,6 +30,7 @@ const SLIDES: SlideItem[] = [
   },
   {
     id: 'stack',
+    tabLabel: '3. Tech Stack & DNS',
     badge: 'Slide 03 • Architecture, Hosting & Email Protection',
     title: 'Why We Pivoted from Monolithic WordPress to Decoupled Next.js + Vercel',
     subtitle:
@@ -34,6 +38,7 @@ const SLIDES: SlideItem[] = [
   },
   {
     id: 'calculator',
+    tabLabel: '4. Calculator Roadmap',
     badge: 'Slide 04 • Custom Calculator Engineering Roadmap',
     title: 'Two-Stage Calculator Strategy: UX Flow First, 1:1 Excel Precision Next',
     subtitle:
@@ -41,21 +46,32 @@ const SLIDES: SlideItem[] = [
   },
   {
     id: 'decisions',
+    tabLabel: '5. Decision Points',
     badge: 'Slide 05 • Key Decision Points & Asset Handoff',
     title: '4 Items to Finalize to Move from Prototype Sign-Off to Production',
     subtitle:
       'Interactive checklist covering the Excel workbook audit, Headless CMS choice, NMLS disclosures, and brand assets.',
   },
   {
+    id: 'effort-costs',
+    tabLabel: '6. Effort & SaaS Costs',
+    badge: 'Slide 06 • Time & Effort to Production + Client Infrastructure Costs',
+    title: '3-Week Production Sprint & Near-Zero Recurring Software Overhead',
+    subtitle:
+      'Remaining Engineering Effort: ~2.5 to 3.5 Weeks (~38–45 Hrs) • Client New Monthly SaaS Overhead: $0/mo (Lean) to ~$10–$32/mo (Pro)',
+  },
+  {
     id: 'sla',
-    badge: 'Slide 06 • Commercial Milestones, Governance & 90-Day SLA',
+    tabLabel: '7. Milestones & SLA',
+    badge: 'Slide 07 • One-Time Development Investment, Governance & 90-Day SLA',
     title: 'Transparent Milestone Schedule & Post-Launch Support Guarantees',
     subtitle:
       '$1,775 Base Scope • 40/25/25/10 Milestone Structure • 100% Client Ownership of Code, Domain & Assets.',
   },
   {
     id: 'next',
-    badge: 'Slide 07 • Prototype Sign-Off & Next Steps',
+    tabLabel: '8. Sign-Off',
+    badge: 'Slide 08 • Prototype Sign-Off & Next Steps',
     title: 'Securing Round 1 Approval & Launching Epic 4/5 Execution',
     subtitle:
       'Immediate action plan following approval of the single-page layout and interactive calculator flow.',
@@ -175,7 +191,7 @@ export default function PitchDeckPage() {
               onClick={() => setActiveSlide(idx)}
               className={`preset-pill ${activeSlide === idx ? 'active' : ''}`}
             >
-              {idx + 1}. {s.id.charAt(0).toUpperCase() + s.id.slice(1)}
+              {s.tabLabel}
             </button>
           ))}
         </div>
@@ -558,7 +574,7 @@ export default function PitchDeckPage() {
                   title: '2. Finalize Headless CMS Choice (Sanity.io vs. Headless WordPress)',
                   owner: 'Joint Decision',
                   detail:
-                    'Sanity.io offers the cleanest modern editing studio and zero server maintenance; Headless WordPress is available if a familiar WP admin screen is preferred.',
+                    'Sanity.io offers the cleanest modern editing studio and $0/mo free tier; Headless WordPress is available if a familiar WP admin screen is preferred.',
                 },
                 {
                   key: 'compliance',
@@ -629,8 +645,200 @@ export default function PitchDeckPage() {
             </div>
           )}
 
-          {/* SLIDE 5: SLA & MILESTONES */}
+          {/* SLIDE 5: TIME & EFFORT TO PRODUCTION + CLIENT INFRASTRUCTURE COSTS */}
           {activeSlide === 5 && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+              {/* 3-Week Production Engineering Effort */}
+              <div>
+                <h3 style={{ fontSize: '1.15rem', color: '#ffffff', marginBottom: '0.85rem' }}>
+                  Part A: Time &amp; Engineering Effort to Full Production (~2.5 to 3.5 Weeks / 38–45 Hrs)
+                </h3>
+                <div className="cards-grid-3">
+                  <div
+                    style={{
+                      backgroundColor: 'var(--navy-800)',
+                      border: '1px solid var(--border-dark)',
+                      borderRadius: 'var(--radius-md)',
+                      padding: '1.25rem',
+                    }}
+                  >
+                    <span className="eyebrow eyebrow-on-dark">Week 1 • 12–15 Hrs (Epic 5)</span>
+                    <h4 style={{ fontSize: '1.05rem', color: '#ffffff', marginBottom: '0.4rem' }}>
+                      1:1 Excel Calculator Engineering
+                    </h4>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-on-dark-muted)' }}>
+                      Audit Robert’s Excel workbook, translate exact formulas &amp; lookup tables into
+                      TypeScript, and verify cent-for-cent parity against 10 spreadsheet test rows.
+                    </p>
+                  </div>
+
+                  <div
+                    style={{
+                      backgroundColor: 'var(--navy-800)',
+                      border: '1px solid var(--border-dark)',
+                      borderRadius: 'var(--radius-md)',
+                      padding: '1.25rem',
+                    }}
+                  >
+                    <span className="eyebrow eyebrow-on-dark">Week 2 • 14–16 Hrs (Epic 2 &amp; 4)</span>
+                    <h4 style={{ fontSize: '1.05rem', color: '#ffffff', marginBottom: '0.4rem' }}>
+                      Headless CMS, Resend Email &amp; Assets
+                    </h4>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-on-dark-muted)' }}>
+                      Configure Sanity.io CMS Studio, wire Resend transactional lead notifications,
+                      embed final vector logos/video/Calendly URL, and insert NMLS compliance text.
+                    </p>
+                  </div>
+
+                  <div
+                    style={{
+                      backgroundColor: 'var(--navy-800)',
+                      border: '1px solid var(--border-dark)',
+                      borderRadius: 'var(--radius-md)',
+                      padding: '1.25rem',
+                    }}
+                  >
+                    <span className="eyebrow eyebrow-on-dark">Week 3 • 10–14 Hrs (Epic 6 &amp; 7)</span>
+                    <h4 style={{ fontSize: '1.05rem', color: '#ffffff', marginBottom: '0.4rem' }}>
+                      SEO, Analytics &amp; GoDaddy DNS Launch
+                    </h4>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-on-dark-muted)' }}>
+                      Connect GA4 &amp; Google Search Console, run Lighthouse mobile audits, point
+                      GoDaddy web DNS to Vercel (preserving M365 email), and host 90-min training.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Client-Side One-Time & Recurring SaaS Expenses */}
+              <div
+                style={{
+                  backgroundColor: 'var(--navy-800)',
+                  border: '1px solid var(--border-dark)',
+                  borderRadius: 'var(--radius-md)',
+                  padding: '1.35rem',
+                  overflowX: 'auto',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                    gap: '0.75rem',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>
+                    Part B: Client-Side Hosting, Email &amp; SaaS Subscription Breakdown
+                  </h3>
+                  <span
+                    style={{
+                      fontSize: '0.78rem',
+                      fontWeight: 700,
+                      padding: '0.3rem 0.75rem',
+                      borderRadius: '6px',
+                      backgroundColor: 'rgba(16, 185, 129, 0.16)',
+                      color: 'var(--emerald-400)',
+                    }}
+                  >
+                    Lean Launch Total: $0/mo New Overhead • Pro Tier: ~$10–$32/mo
+                  </span>
+                </div>
+
+                <table
+                  style={{
+                    width: '100%',
+                    borderCollapse: 'collapse',
+                    fontSize: '0.85rem',
+                    textAlign: 'left',
+                  }}
+                >
+                  <thead>
+                    <tr
+                      style={{
+                        borderBottom: '1px solid rgba(255,255,255,0.14)',
+                        color: 'var(--text-on-dark-muted)',
+                      }}
+                    >
+                      <th style={{ padding: '0.6rem 0.5rem' }}>Service / Layer</th>
+                      <th style={{ padding: '0.6rem 0.5rem' }}>Recommended Provider</th>
+                      <th style={{ padding: '0.6rem 0.5rem' }}>Lean Tier (Launch Ready)</th>
+                      <th style={{ padding: '0.6rem 0.5rem' }}>Pro / Growth Tier (Optional)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      {
+                        service: 'Frontend Edge Hosting',
+                        provider: 'Vercel',
+                        lean: '$0 / mo (Starter)',
+                        pro: '$20 / mo (Vercel Pro)',
+                      },
+                      {
+                        service: 'Headless CMS',
+                        provider: 'Sanity.io (or Headless WP)',
+                        lean: '$0 / mo (Free: 3 users, 100k API reqs/mo)',
+                        pro: '$15 / mo (only if using managed WP host)',
+                      },
+                      {
+                        service: 'Lead Form Email Service',
+                        provider: 'Resend (Transactional Email API)',
+                        lean: '$0 / mo (Free: 3,000 emails/mo)',
+                        pro: '$20 / mo (50,000+ emails/mo)',
+                      },
+                      {
+                        service: 'Domain & Business Email',
+                        provider: 'GoDaddy + Microsoft 365 (Existing)',
+                        lean: 'Existing (No new cost)',
+                        pro: 'Existing M365 (~$6–$12/mo)',
+                      },
+                      {
+                        service: 'Calendar Booking',
+                        provider: 'Calendly',
+                        lean: '$0 / mo (Basic: 1 event type)',
+                        pro: '$10–$12 / mo (Multi-pillar event types)',
+                      },
+                      {
+                        service: 'SEO, Analytics & Phase 2 CRM',
+                        provider: 'Google GA4 + HubSpot CRM',
+                        lean: '$0 / mo (GA4 + HubSpot Free CRM)',
+                        pro: '$15–$20 / mo (HubSpot Starter in Phase 2)',
+                      },
+                    ].map((row) => (
+                      <tr
+                        key={row.service}
+                        style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
+                      >
+                        <td style={{ padding: '0.6rem 0.5rem', fontWeight: 600, color: '#ffffff' }}>
+                          {row.service}
+                        </td>
+                        <td style={{ padding: '0.6rem 0.5rem', color: 'var(--text-on-dark-muted)' }}>
+                          {row.provider}
+                        </td>
+                        <td
+                          style={{
+                            padding: '0.6rem 0.5rem',
+                            fontWeight: 700,
+                            color: 'var(--emerald-400)',
+                          }}
+                        >
+                          {row.lean}
+                        </td>
+                        <td style={{ padding: '0.6rem 0.5rem', color: 'var(--text-on-dark-muted)' }}>
+                          {row.pro}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* SLIDE 6: SLA & MILESTONES */}
+          {activeSlide === 6 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
               <div className="cards-grid-4">
                 {[
@@ -763,8 +971,8 @@ export default function PitchDeckPage() {
             </div>
           )}
 
-          {/* SLIDE 6: NEXT STEPS */}
-          {activeSlide === 6 && (
+          {/* SLIDE 7: NEXT STEPS */}
+          {activeSlide === 7 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
               <div className="cards-grid-3">
                 <div
@@ -775,7 +983,7 @@ export default function PitchDeckPage() {
                     padding: '1.5rem',
                   }}
                 >
-                  <span className="eyebrow eyebrow-on-dark">Action 01</span>
+                  <span className="eyebrow eyebrow-on-dark">Action 01 • Today</span>
                   <h3 style={{ fontSize: '1.15rem', color: '#ffffff', marginBottom: '0.45rem' }}>
                     Sign Off on Prototype Flow
                   </h3>
@@ -793,7 +1001,7 @@ export default function PitchDeckPage() {
                     padding: '1.5rem',
                   }}
                 >
-                  <span className="eyebrow eyebrow-on-dark">Action 02</span>
+                  <span className="eyebrow eyebrow-on-dark">Action 02 • This Week</span>
                   <h3 style={{ fontSize: '1.15rem', color: '#ffffff', marginBottom: '0.45rem' }}>
                     Deliver Excel &amp; Compliance Assets
                   </h3>
@@ -811,13 +1019,13 @@ export default function PitchDeckPage() {
                     padding: '1.5rem',
                   }}
                 >
-                  <span className="eyebrow eyebrow-on-dark">Action 03</span>
+                  <span className="eyebrow eyebrow-on-dark">Action 03 • 3-Week Sprint</span>
                   <h3 style={{ fontSize: '1.15rem', color: '#ffffff', marginBottom: '0.45rem' }}>
-                    Execute Epic 4 &amp; Epic 5 Build
+                    Execute Epic 4, 5, 6 &amp; 7 Build
                   </h3>
                   <p style={{ fontSize: '0.88rem', color: 'var(--text-on-dark-muted)' }}>
-                    Integrate 1:1 Excel formulas, connect Headless CMS &amp; GA4 analytics, and
-                    prepare for production launch.
+                    Integrate 1:1 Excel formulas, connect Sanity CMS + Resend + GA4, and execute
+                    GoDaddy DNS cutover.
                   </p>
                 </div>
               </div>

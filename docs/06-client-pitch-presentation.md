@@ -44,14 +44,38 @@
 
 ## Slide 5: Key Decision Points & Epic 1 Handoff Checklist
 - [ ] **1. Excel Workbook Handoff (Robert → Hemant):** Share the `.xlsx` mortgage workbook for formula mapping and complexity audit.
-- [ ] **2. Headless CMS Selection (Joint Decision):** Choose between **Sanity.io** (recommended for speed & zero maintenance) or **Headless WordPress**.
+- [ ] **2. Headless CMS Selection (Joint Decision):** Choose between **Sanity.io** (recommended for speed & $0/mo free tier) or **Headless WordPress**.
 - [ ] **3. Legal & Regulatory Disclosures (Robert):** Provide final NMLS ID, state licensing text, and Treece Financial Group / broker disclosures.
 - [ ] **4. Brand Assets & Links (Robert):** Deliver vector logo files (`SVG`/`EPS`), introductory video embed link, and live Calendly URL.
 
 ---
 
-## Slide 6: Commercial Terms, Milestones & 90-Day SLA
-- **Base Contract Value:** $1,775
+## Slide 6: Time & Effort to Production + Client Infrastructure Costs
+
+### Part A: Remaining Time & Engineering Effort (~2.5 to 3.5 Weeks / 38–45 Hours)
+- **Week 1 (12–15 Hours) — Epic 5: 1:1 Excel Calculator Engineering & QA**
+  - Audit Robert’s `.xlsx` file, translate all named cells, lookup tables, and formulas into `src/lib/calculator-engine.ts`, and verify cent-for-cent parity against 10 spreadsheet test rows.
+- **Week 2 (14–16 Hours) — Epic 2 & 4: Headless CMS, Resend Email & Final Assets**
+  - Configure Sanity.io Studio (or Headless WP), wire Resend transactional email notifications for the lead form, embed final vector logos/video/live Calendly URL, and insert final NMLS & Treece Financial compliance text.
+- **Week 3 (10–14 Hours) — Epic 6 & 7: SEO, Analytics, GoDaddy DNS Launch & Training**
+  - Connect GA4 & Google Search Console, run Lighthouse mobile speed audits (<2s verification), execute GoDaddy web DNS cutover to Vercel (preserving Microsoft 365 email), and deliver the 90-minute training session.
+
+### Part B: Client-Side Hosting, Email & SaaS Subscription Breakdown
+
+| Service / Layer | Recommended Provider | Lean Launch Tier (Recommended) | Pro / Growth Tier (Optional) |
+| :--- | :--- | :--- | :--- |
+| **Frontend Edge Hosting** | **Vercel** | **$0 / mo** (Starter Tier) | **$20 / mo** (Vercel Pro) |
+| **Headless CMS** | **Sanity.io** (or Headless WP) | **$0 / mo** (Free: 3 users, 100k API reqs/mo) | **$15 / mo** (if using managed WP host) |
+| **Lead Form Email Delivery** | **Resend** (Transactional Email API) | **$0 / mo** (Free: 3,000 emails/mo) | **$20 / mo** (50,000+ emails/mo) |
+| **Domain & Business Email** | **GoDaddy + Microsoft 365** | **Existing** (No new cost; M365 untouched) | **Existing** (~$6–$12/mo M365) |
+| **Calendar Scheduling** | **Calendly** | **$0 / mo** (Basic: 1 consultation event type) | **$10–$12 / mo** (Multiple pillar event types) |
+| **SEO, Analytics & CRM** | **Google GA4 + HubSpot CRM** | **$0 / mo** (GA4 + HubSpot Free CRM) | **$15–$20 / mo** (HubSpot Starter in Phase 2) |
+| **Total New Recurring Cost** | | **$0 / month** | **~$10 to $32 / month** |
+
+---
+
+## Slide 7: One-Time Development Investment, Milestones & 90-Day SLA
+- **One-Time Development Investment:** **$1,775**
 - **Milestone Schedule (40 / 25 / 25 / 10):**
   - **40% ($710.00):** Kickoff, Discovery & Architecture Setup
   - **25% ($443.75):** Prototype & Single-Page UI/UX Sign-Off *(Current Milestone)*
@@ -61,3 +85,10 @@
   - **100% Ownership:** Robert retains full ownership of the domain, codebase, and assets upon final payment.
   - **Revisions:** 2 design rounds + 1 pre-launch functional review.
   - **Maintenance SLA:** 90 days post-launch bug support with a **48-hour response SLA** for critical issues.
+
+---
+
+## Slide 8: Immediate Next Steps
+1. **Today:** Approve single-page layout, Navy/Emerald visual theme, and calculator UX flow (Milestone 2 Sign-Off).
+2. **This Week:** Hand off the Excel mortgage workbook, vector logos, Calendly URL, and NMLS/Treece disclosure copy.
+3. **3-Week Production Sprint:** Execute 1:1 Excel formula integration, Sanity CMS + Resend email wiring, GA4 setup, and GoDaddy DNS launch.
